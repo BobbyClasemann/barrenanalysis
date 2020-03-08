@@ -7,11 +7,12 @@
 #include <iostream>
 #include <utility>
 #include <functional>
+#include <queue>
 
 using namespace std;
 
-const int ROW = 6;
-const int COL = 4;
+const int ROW = 600;
+const int COL = 400;
 
 struct pair_hash {
 	template <class T1, class T2>
@@ -30,7 +31,8 @@ int main() {
 	char coords[256];
 	int totalLandArea = ROW * COL;
 	int fertileLandArea = 0;
-	int barrenLandArea = 0;
+	queue<pair<int, int> > queue;
+	vector<int> fertileAreas;
 	cout << "Enter coordinates (e to end): ";
 	while (cin.getline (coords, 256)) {
 		if (coords[0] == 'e')
@@ -56,20 +58,56 @@ int main() {
 		int x = it->first.first;
 		int y = it->first.second;
 		field[x][y] = false;
+		visited[x][y] = true;
 	}
+	int count = 0;
+	for (int i = 0; i < field.size(); i++) {
+		for (int j = 0; j < field[i].size(); j++){
+			if (!field[i][j])
+				count++;
+		}
+	}
+	cout << count << endl;
 
 	for (int i = 0; i < field.size(); i++) {
 		for (int j = 0; j < field[i].size(); j++) {
-			if (field[i][j])
-				fertileLandArea++;
-			else
-				barrenLandArea++;
+			if (field[i][j] && !visited[i][j]) {
+				pair<int, int> p;
+				p.first = i;
+				p.second = j;
+				queue.push(p);
+				while (!queue.empty()) {
+					int n = queue.size();
+					for (int k = 0; k < n; k++) {
+						pair<int, int> point;
+						int x = queue.front().first;
+						int y = queue.front().second;
+						queue.pop();
+						if (x < 0 || x >= field.size() || y < 0 || y >= field[0].size() || visited[x][y])
+							continue;
+						visited[x][y] = true;
+						fertileLandArea++;
+						point.first = x+1, point.second = y;
+						queue.push(point);
+						point.first = x-1, point.second = y;
+						queue.push(point);
+						point.first = x, point.second = y+1;
+						queue.push(point);
+						point.first = x, point.second = y-1;
+						queue.push(point);
+					}
+				}
+				fertileAreas.push_back(fertileLandArea);
+				fertileLandArea = 0;
+			}
 		}
 	}
 
-	cout << "fertile: " << fertileLandArea << endl;
-	cout << "barren: " << barrenLandArea << endl;
+	sort(fertileAreas.begin(), fertileAreas.end());
 
+	for (auto a : fertileAreas)
+		cout << a << " ";
+	cout << endl;
 
 	return 0;
 }
