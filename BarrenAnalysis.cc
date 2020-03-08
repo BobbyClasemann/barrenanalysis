@@ -57,17 +57,9 @@ int main() {
 	for (auto it = allCoordCount.begin(); it != allCoordCount.end(); it++){
 		int x = it->first.first;
 		int y = it->first.second;
-		field[x][y] = false;
-		visited[x][y] = true;
+		field[y][x] = false;
+		visited[y][x] = true;
 	}
-	int count = 0;
-	for (int i = 0; i < field.size(); i++) {
-		for (int j = 0; j < field[i].size(); j++){
-			if (!field[i][j])
-				count++;
-		}
-	}
-	cout << count << endl;
 
 	for (int i = 0; i < field.size(); i++) {
 		for (int j = 0; j < field[i].size(); j++) {
@@ -86,7 +78,8 @@ int main() {
 						if (x < 0 || x >= field.size() || y < 0 || y >= field[0].size() || visited[x][y])
 							continue;
 						visited[x][y] = true;
-						fertileLandArea++;
+						if (field[x][y])
+							fertileLandArea++;
 						point.first = x+1, point.second = y;
 						queue.push(point);
 						point.first = x-1, point.second = y;
