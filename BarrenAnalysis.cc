@@ -23,23 +23,7 @@ struct pair_hash {
 	}
 };
 
-int main() {
-	unordered_map<pair<int, int>, int, pair_hash> allCoordCount;
-	vector<vector<bool> > field(ROW, vector<bool>(COL, true));
-	vector<vector<bool> > visited(ROW, vector<bool>(COL, false));
-	vector<string> coordinates;
-	char coords[256];
-	int totalLandArea = ROW * COL;
-	int fertileLandArea = 0;
-	queue<pair<int, int> > queue;
-	vector<int> fertileAreas;
-	cout << "Enter coordinates (e to end): ";
-	while (cin.getline (coords, 256)) {
-		if (coords[0] == 'e')
-			break;
-		coordinates.push_back(coords);
-	}
-
+void extractInput(vector<string> coordinates, unordered_map<pair<int, int>, int, pair_hash>& allCoordCount) {
 	for (int i = 0; i < coordinates.size(); i++) {
 		stringstream ss(coordinates[i]);
 		int x1, y1, x2, y2;
@@ -53,13 +37,22 @@ int main() {
 			}
 		}
 	}
+}
 
-	for (auto it = allCoordCount.begin(); it != allCoordCount.end(); it++){
+void setBarrenLand(unordered_map<pair<int, int>, int, pair_hash>& allCoordCount, 
+	vector<vector<bool> >& field, vector<vector<bool> >& visited) {
+		for (auto it = allCoordCount.begin(); it != allCoordCount.end(); it++){
 		int x = it->first.first;
 		int y = it->first.second;
 		field[y][x] = false;
 		visited[y][x] = true;
 	}
+}
+
+void searchForFertileLand(vector<vector<bool> >& field, vector<vector<bool> >& visited,
+	vector<int>& fertileAreas) {
+	int fertileLandArea = 0;
+	queue<pair<int, int> > queue;
 
 	for (int i = 0; i < field.size(); i++) {
 		for (int j = 0; j < field[i].size(); j++) {
@@ -95,6 +88,32 @@ int main() {
 			}
 		}
 	}
+}
+
+int main() {
+	unordered_map<pair<int, int>, int, pair_hash> allCoordCount;
+	vector<vector<bool> > field(ROW, vector<bool>(COL, true));
+	vector<vector<bool> > visited(ROW, vector<bool>(COL, false));
+	vector<string> coordinates;
+	char coords[256];
+	int totalLandArea = ROW * COL;
+	int fertileLandArea = 0;
+	queue<pair<int, int> > queue;
+	vector<int> fertileAreas;
+
+	// get user input coordiantes
+	cout << "Enter coordinates (e to end): ";
+	while (cin.getline (coords, 256)) {
+		if (coords[0] == 'e')
+			break;
+		coordinates.push_back(coords);
+	}
+
+	extractInput(coordinates, allCoordCount);
+	
+	setBarrenLand(allCoordCount, field, visited);
+
+	searchForFertileLand(field, visited, fertileAreas);
 
 	sort(fertileAreas.begin(), fertileAreas.end());
 
