@@ -10,6 +10,9 @@
 
 using namespace std;
 
+const int ROW = 6;
+const int COL = 4;
+
 struct pair_hash {
 	template <class T1, class T2>
 	size_t operator () (const pair<T1, T2> &p) const {
@@ -21,9 +24,13 @@ struct pair_hash {
 
 int main() {
 	unordered_map<pair<int, int>, int, pair_hash> allCoordCount;
-	unordered_map<pair<int, int>, int, pair_hash> perimeterCoordCount;
+	vector<vector<bool> > field(ROW, vector<bool>(COL, true));
+	vector<vector<bool> > visited(ROW, vector<bool>(COL, false));
 	vector<string> coordinates;
 	char coords[256];
+	int totalLandArea = ROW * COL;
+	int fertileLandArea = 0;
+	int barrenLandArea = 0;
 	cout << "Enter coordinates (e to end): ";
 	while (cin.getline (coords, 256)) {
 		if (coords[0] == 'e')
@@ -40,11 +47,7 @@ int main() {
 				pair<int, int> p;
 				p.first = j;
 				p.second = k;
-				if (allCoordCount.find(p) == allCoordCount.end()) {
-					allCoordCount[p] = 1;
-				} else {
-					allCoordCount[p]++;
-				}
+				allCoordCount[p] = 1;
 			}
 		}
 	}
@@ -52,11 +55,21 @@ int main() {
 	for (auto it = allCoordCount.begin(); it != allCoordCount.end(); it++){
 		int x = it->first.first;
 		int y = it->first.second;
+		field[x][y] = false;
 	}
 
+	for (int i = 0; i < field.size(); i++) {
+		for (int j = 0; j < field[i].size(); j++) {
+			if (field[i][j])
+				fertileLandArea++;
+			else
+				barrenLandArea++;
+		}
+	}
+
+	cout << "fertile: " << fertileLandArea << endl;
+	cout << "barren: " << barrenLandArea << endl;
 
 
-	int area = 0;
-
-	return area;
+	return 0;
 }
