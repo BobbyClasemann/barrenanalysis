@@ -24,11 +24,8 @@ int main() {
 	}
 
 	barrenLand.extractInput(coordinates, allCoordCount);
-	
 	barrenLand.setBarrenLand(allCoordCount, field, visited);
-
 	barrenLand.searchForFertileLand(field, visited, fertileAreas);
-
 	sort(fertileAreas.begin(), fertileAreas.end());
 
 	for (auto a : fertileAreas)
