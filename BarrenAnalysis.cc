@@ -96,8 +96,6 @@ int main() {
 	vector<vector<bool> > visited(ROW, vector<bool>(COL, false));
 	vector<string> coordinates;
 	char coords[256];
-	int totalLandArea = ROW * COL;
-	int fertileLandArea = 0;
 	queue<pair<int, int> > queue;
 	vector<int> fertileAreas;
 
