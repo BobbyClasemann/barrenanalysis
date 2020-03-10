@@ -18,12 +18,20 @@ int main() {
 	// get user input coordinates
 	cout << "Enter coordinates (e to end): ";
 	while (cin.getline (coords, 256)) {
-		if (coords[0] == 'e')
-			break;
+		if (coords[0] == 'e') {
+			allCoordCount = barrenLand.extractInput(coordinates);
+			if (allCoordCount.size() == 0) {
+				coordinates.clear();
+				cout << "Invalid input. Please try again." << endl;
+				cout << "Enter coordinates (e to end): ";
+				continue;
+			}
+			else
+				break;
+		}
+		cout << "Enter coordinates (e to end): ";
 		coordinates.push_back(coords);
 	}
-
-	allCoordCount = barrenLand.extractInput(coordinates);
 	barrenLand.setBarrenLand(allCoordCount, field, visited);
 	fertileAreas = barrenLand.searchForFertileLand(field, visited);
 	sort(fertileAreas.begin(), fertileAreas.end());

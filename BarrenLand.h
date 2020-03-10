@@ -1,9 +1,8 @@
 #include <unordered_map>
 #include <vector>
-#include <map>
-#include <cmath>
 #include <string>
 #include <sstream>
+#include <cmath>
 #include <iostream>
 #include <utility>
 #include <functional>
@@ -22,12 +21,20 @@ struct pair_hash {
 
 class BarrenLand {
 public:
+	bool isValidInput (int x1, int y1, int x2, int y2) {
+		if (x1 < 0 || x1 > 399 || y1 < 0 || y1 > 599 ||
+			x2 < 0 || x2 > 399 || y2 < 0 || y2 > 599)
+			return false;
+		return true;
+	}
 	unordered_map<pair<int, int>, int, pair_hash> extractInput(vector<string> coordinates) {
 		unordered_map<pair<int, int>, int, pair_hash> allCoordCount;
 		for (int i = 0; i < coordinates.size(); i++) {
 			stringstream ss(coordinates[i]);
 			int x1, y1, x2, y2;
 			ss >> x1 >> y1 >> x2 >> y2;
+			if (!isValidInput(x1, y1, x2, y2)) 
+				return unordered_map<pair <int, int>, int, pair_hash>();
 			for (int j = x1; j <= x2; j++) {
 				for (int k = y1; k <= y2; k++) {
 					pair<int, int> p;
