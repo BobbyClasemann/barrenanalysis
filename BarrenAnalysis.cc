@@ -23,9 +23,9 @@ int main() {
 		coordinates.push_back(coords);
 	}
 
-	barrenLand.extractInput(coordinates, allCoordCount);
+	allCoordCount = barrenLand.extractInput(coordinates);
 	barrenLand.setBarrenLand(allCoordCount, field, visited);
-	barrenLand.searchForFertileLand(field, visited, fertileAreas);
+	fertileAreas = barrenLand.searchForFertileLand(field, visited);
 	sort(fertileAreas.begin(), fertileAreas.end());
 
 	for (auto a : fertileAreas)

@@ -22,7 +22,8 @@ struct pair_hash {
 
 class BarrenLand {
 public:
-	void extractInput(vector<string> coordinates, unordered_map<pair<int, int>, int, pair_hash>& allCoordCount) {
+	unordered_map<pair<int, int>, int, pair_hash> extractInput(vector<string> coordinates) {
+		unordered_map<pair<int, int>, int, pair_hash> allCoordCount;
 		for (int i = 0; i < coordinates.size(); i++) {
 			stringstream ss(coordinates[i]);
 			int x1, y1, x2, y2;
@@ -36,6 +37,8 @@ public:
 				}
 			}
 		}
+
+		return allCoordCount;
 	}
 
 	void setBarrenLand(unordered_map<pair<int, int>, int, pair_hash>& allCoordCount, 
@@ -48,8 +51,8 @@ public:
 		}
 	}
 
-	void searchForFertileLand(vector<vector<bool> >& field, vector<vector<bool> >& visited,
-	vector<int>& fertileAreas) {
+	vector<int> searchForFertileLand(vector<vector<bool> > field, vector<vector<bool> > visited) {
+		vector<int> fertileAreas;
 		int fertileLandArea = 0;
 		queue<pair<int, int> > queue;
 
@@ -87,5 +90,6 @@ public:
 				}
 			}
 		}
+		return fertileAreas;
 	}
 };
