@@ -11,13 +11,11 @@ Go to the directory where this repository is cloned in your terminal.
 Assuming you have the required dependencies installed, type the following in your terminal: g++ src/BarrenAnalysis.cc -o barren     
 To execute, type ./barren     
 The program will prompt you to enter the coordiantes of the rectangle.  
-To enter each coordinate, type: <span class="text-gray-dark mb-2">X1 Y1 X2 Y2</span> 
+To enter each coordinate, type "X1 Y1 X2 Y2"  where X1, X2 are values 0-399 and Y1, Y2 are value 0-599.  
 Then hit enter to insert the next set of coordinates.  
 Once you're finished entering the coordinates, press 'e' to end user input.  
 
 # Testing
 
-Need to have framework Catch2 installed. This is the Github repo link: https://github.com/catchorg/Catch2.  
-I chose this framework for its simplicity of implementation for testing in C++.  
-Once installed, need to do a cmake for Catch2.  
-To run in the command line, use g++ BarrenAnalysis_tests.cc -o test -std=c++11. Then ./test to execute.  
+To build the tests, type in the command line: g++ BarrenAnalysis_tests.cc -o test -std=c++11.  
+To execute the tests, type ./test    
