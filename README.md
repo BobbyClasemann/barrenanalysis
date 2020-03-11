@@ -18,5 +18,5 @@ Once the program has finished running, it should display the area of the fertile
 
 # Testing
 
-To build the tests, type in the command line: g++ BarrenAnalysis_tests.cc -o test -std=c++11.  
+To build the tests, type in the command line: g++ tests/BarrenAnalysis_tests.cc -o test -std=c++11.  
 To execute the tests, type ./test    
