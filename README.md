@@ -13,7 +13,8 @@ To execute, type ./barren
 The program will prompt you to enter the coordiantes of the rectangle.  
 To enter each coordinate, type "X1 Y1 X2 Y2"  where X1, X2 are values 0-399 and Y1, Y2 are values 0-599.  
 Then hit enter to insert the next set of coordinates.  
-Once you're finished entering the coordinates, press 'e' to end user input.  
+Once you're finished entering the coordinates, press 'e' to end user input. 
+Once the program has finished running, it should display the area of the fertile land in ascending order.  
 
 # Testing
 
