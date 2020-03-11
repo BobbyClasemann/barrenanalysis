@@ -1,4 +1,4 @@
-#include "BarrenLand.h"
+#include "../include/BarrenLand.h"
 
 using namespace std;
 

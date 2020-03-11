@@ -1,5 +1,5 @@
 #define CATCH_CONFIG_MAIN
-#include "BarrenLand.h"
+#include "../include/BarrenLand.h"
 #include <catch2/catch.hpp>
 
 SCENARIO("Small Grid", "[vector]") {
