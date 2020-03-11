@@ -1,9 +1,17 @@
-# How to run program
+# Dependencies
 
-To run the program, once this repo is cloned, type in the cmd line g++ BarrenAnalysis.cc -o barren.   
-Then to execute, type ./barren.   
+G++  
+Catch2 for the unit testing: https://github.com/catchorg/Catch2  
+
+
+# Running the program
+
+Clone this repo: https://github.com/BobbyClasemann/barrenanalysis.git  
+Go to the directory where this repository is cloned in your terminal.  
+Assuming you have the required dependencies installed, type the following in your terminal: g++ src/BarrenAnalysis.cc -o barren     
+To execute, type ./barren     
 The program will prompt you to enter the coordiantes of the rectangle.  
-To enter each coordinate, type: X1 Y1 X2 Y2.  
+To enter each coordinate, type: $bg-gray X1 Y1 X2 Y2.  
 Then hit enter to insert the next set of coordinates.  
 Once you're finished entering the coordinates, press 'e' to end user input.  
 
