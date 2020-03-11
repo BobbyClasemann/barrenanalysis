@@ -23,4 +23,4 @@ Go to the same directory that the Catch2 folder is in and type "Cmake Catch2"
 Then type "make"  
 This will scan and build the dependencies of Catch2.  
 Once it's finished, type in the terminal: g++ tests/BarrenAnalysis_tests.cc -o test -std=c++11.  
-Then to execute the tests, type ./test if on MacOS or text.exe if on Windows
+Then to execute the tests, type ./test if on MacOS or test.exe if on Windows
