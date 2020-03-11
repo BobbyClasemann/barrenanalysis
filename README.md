@@ -11,7 +11,7 @@ Go to the directory where this repository is cloned in your terminal.
 Assuming you have the required dependencies installed, type the following in your terminal: g++ src/BarrenAnalysis.cc -o barren     
 To execute, type ./barren     
 The program will prompt you to enter the coordiantes of the rectangle.  
-To enter each coordinate, type: <div class="text-gray-dark mb-2">X1 Y1 X2 Y2</div> 
+To enter each coordinate, type: <span class="text-gray-dark mb-2">X1 Y1 X2 Y2</span> 
 Then hit enter to insert the next set of coordinates.  
 Once you're finished entering the coordinates, press 'e' to end user input.  
 
