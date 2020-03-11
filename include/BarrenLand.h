@@ -7,6 +7,7 @@
 #include <utility>
 #include <functional>
 #include <queue>
+#include <algorithm>
 
 using namespace std;
 
