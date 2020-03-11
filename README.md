@@ -9,7 +9,7 @@ Catch2: Submodule is included in this repository
 Clone this repo: https://github.com/BobbyClasemann/barrenanalysis.git  
 Go to the directory where this repository is cloned in your terminal.  
 Assuming you have the required dependencies installed, type the following in your terminal: g++ src/BarrenAnalysis.cc -o barren  
-To execute, type ./barren     
+To execute, type ./barren if on MacOS or barren.exe if on Windows      
 The program will prompt you to enter the coordiantes of the rectangle.  
 To enter each coordinate, type "X1 Y1 X2 Y2"  where X1, X2 are values 0-399 and Y1, Y2 are values 0-599.  
 Then hit enter to insert the next set of coordinates.  
